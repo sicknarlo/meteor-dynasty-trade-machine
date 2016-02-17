@@ -23,3 +23,7 @@ check
 twbs:bootstrap
 accounts-password
 static-html                 # Render HTML for React bootstrapping
+less
+nemo64:bootstrap
+mizzao:jquery-ui
+universe:modules

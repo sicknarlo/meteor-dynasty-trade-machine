@@ -1,37 +1,37 @@
+const {Link} = ReactRouter;
+
 Items = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      items: ItemsCollection.find({}).fetch()
+      items: Players.find({}, {sort: {avg_116: 1}}).fetch()
     };
   },
   componentWillMount() {
     // Update the page's title
-    document.title = "Items";
-  },
-  addItem(e) {
-    e.preventDefault();
-    var item = this.refs.input.value;
-
-    ItemsCollection.insert({'content': item});
-    this.refs.input.value = "";
+    document.title = "Players";
   },
   render() {
     return (
-      <div className="row">
-        <ul>
-          {this.data.items.map((item) => {
-            return <li key={item._id}>{item.content}</li>;
+      <div className="container">
+        <table className="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>ADP</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.data.items.map((item) => {
+            return (<tr>
+                      <td><Link to={"/items/" + item._id}>{item.name}</Link></td>
+                      <td>{item.avg_jan16}</td>
+                      <td>{item.value}</td>
+                    </tr>);
           })}
-        </ul>
-        <div className="col-xs-8 col-sm-6 col-md-4">
-          <form onSubmit={this.addItem}>
-            <div className="form-group">
-              <input type="text" className="form-control" placeholder="Item" ref="input"/>
-            </div>
-            <button className="btn btn-primary" type="submit">Add Item</button>
-          </form>
-        </div>
+          </tbody>
+        </table>
       </div>
     );
   }

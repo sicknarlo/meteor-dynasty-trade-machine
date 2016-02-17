@@ -10,7 +10,8 @@ AppNavBar = React.createClass({
       <NavBar brandRoute="/">
         <ul className="nav navbar-nav">
           <NavLink to="/" index>Home</NavLink>
-          <NavLink to="/items">Items</NavLink>
+          <NavLink to="/items">Players</NavLink>
+          <NavLink to="/calculator">Calculator</NavLink>
         </ul>
         <ul className="nav navbar-nav navbar-right">
           <NavLink to="/signin">Sign In</NavLink>
@@ -50,7 +51,7 @@ var NavBar = React.createClass({
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <Link className="navbar-brand" to={this.props.brandRoute}>Meteor-React Demo</Link>
+            <Link className="navbar-brand" to={this.props.brandRoute}>Dynasty Trade Machine</Link>
           </div>
           <div className="collapse navbar-collapse" id="nav-collapse">
             {/* Components of the navigation bar will be rendered here */}

@@ -1,13 +1,13 @@
 Index = React.createClass({
   componentWillMount() {
     // Update the page's title
-    document.title = "Meteor And React Demo";
+    document.title = "Dynasty Trade Machine";
   },
   render() {
     return (
       <div className="row">
         <div className="col-xs-12">
-          <p>This is the index route.</p>
+          <p>The Dynasty Trade Machine</p>
         </div>
       </div>
     );
