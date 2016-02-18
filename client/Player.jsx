@@ -5,11 +5,11 @@ ChartADP = React.createClass({
 
     $('#adp-chart').highcharts({
         title: {
-            text: 'Average Draft Position',
+            text: this.props.player.name,
             x: -20 //center
         },
         subtitle: {
-            text: 'Aggregated ADP',
+            text: 'Average Draft Position',
             x: -20
         },
         xAxis: {
@@ -48,11 +48,11 @@ ChartADP = React.createClass({
 
     $('#adp-chart').highcharts({
         title: {
-            text: 'Average Draft Position',
+            text: this.props.player.name,
             x: -20 //center
         },
         subtitle: {
-            text: 'Aggregated ADP',
+            text: 'Average Draft Position',
             x: -20
         },
         xAxis: {
