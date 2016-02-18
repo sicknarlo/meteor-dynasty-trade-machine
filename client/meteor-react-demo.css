@@ -1,1 +1,43 @@
 /* CSS declarations go here */
+
+.inf-content{
+    border:1px solid #DDDDDD;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+    box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
+}
+
+.player-profile {
+	width: 350px;
+	margin: 0 auto;
+	display: block;
+}
+
+.rating-star {
+    font-size: 3em;
+}
+
+#adp-chart {
+	min-width: 310px;
+	height: 400px;
+	margin: 30px auto;
+}
+
+.green {
+	color: green;
+}
+
+.yellow {
+	color: yellow;
+}
+
+.red {
+	color: red;
+}
+
+.roto-link {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}

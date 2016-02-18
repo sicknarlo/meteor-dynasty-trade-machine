@@ -27,3 +27,5 @@ less
 nemo64:bootstrap
 mizzao:jquery-ui
 universe:modules
+momentjs:moment
+maazalik:highcharts

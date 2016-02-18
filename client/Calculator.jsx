@@ -1,9 +1,11 @@
+const {Link} = ReactRouter;
+
 Results = React.createClass({
   renderTeam1 () {
     return this.props.team2.map((player) => {
       return (
           <tr>
-            <td>{player.name}</td>
+            <td><Link key={player._id} to={"/items/" + player._id}>{player.name}</Link></td>
             <td>{player.value}</td>
           </tr>
         )
@@ -13,7 +15,7 @@ Results = React.createClass({
     return this.props.team1.map((player) => {
       return (
           <tr>
-            <td>{player.name}</td>
+            <td><Link key={player._id} to={"/items/" + player._id}>{player.name}</Link></td>
             <td>{player.value}</td>
           </tr>
         )
@@ -110,7 +112,7 @@ Results = React.createClass({
               <h3>Trade Rating: {tradeRating}%</h3> 
             </div>
             <div className="col-xs-12 text-center">
-              <h3>Closest Player: {closestPlayer.name} | {closestPlayer.value}</h3> 
+              <h3>Closest Player: <Link key={closestPlayer._id} to={"/items/" + closestPlayer._id}>{closestPlayer.name}</Link> | {closestPlayer.value}</h3> 
             </div>
             <div className="col-md-6 col-md-offset-3 text-center">
               <button className="btn btn-primary btn-lg" onClick={this.props.clearEvent}>Clear</button>
