@@ -12,7 +12,7 @@ Items = React.createClass({
     document.title = "Players";
   },
   _renderTrendArrow (player) {
-    const trend = player.avg_116 - player.avg_1215;
+    const trend = player.avg_1215 - player.avg_116;
     if (trend > 0) {
       return "glyphicon glyphicon-arrow-up green";
     } else if (trend == 0) {
@@ -43,7 +43,7 @@ Items = React.createClass({
                       <td><Link to={"/items/" + item._id}>{item.name}</Link></td>
                       <td>{item.position}</td>
                       <td>{item.avg_116}</td>
-                      <td>{item.avg_116 - item.avg_1215} <span className={this._renderTrendArrow(item)}></span></td>
+                      <td>{Math.ceil(item.avg_1215 - item.avg_116)} <span className={this._renderTrendArrow(item)}></span></td>
                       <td>{item.value}</td>
                     </tr>);
           })}

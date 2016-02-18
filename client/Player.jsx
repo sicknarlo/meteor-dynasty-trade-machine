@@ -1,11 +1,11 @@
 const {Link} = ReactRouter;
 
 ChartADP = React.createClass({
-  componentDidMount: function() {
-
+  buildChart(status) {
+    const props = status == "this" ? this.props : status;
     $('#adp-chart').highcharts({
         title: {
-            text: this.props.player.name,
+            text: props.player.name,
             x: -20 //center
         },
         subtitle: {
@@ -37,58 +37,26 @@ ChartADP = React.createClass({
         },
         series: [{
             name: 'Dynasty League Football',
-            data: [this.props.player.dlf_1215, this.props.player.dlf_116]
+            data: [props.player.dlf_1215, props.player.dlf_116]
         }, {
             name: 'Dynasty Nerds',
-            data: [this.props.player.dn_1215, this.props.player.dn_116]
+            data: [props.player.dn_1215, props.player.dn_116]
+        },{
+            name: 'Fantasy Pros',
+            data: [props.player.fp_116, props.player.fp_116]
+        }, {
+            name: 'Average',
+            data: [props.player.avg_1215, props.player.avg_116]
         }]
     });
   },
+  componentDidMount: function() {
+    this.buildChart("this");
+    $('html,body').animate({ scrollTop: 0 }, 'slow');
+  },
   componentWillReceiveProps: function(nextProps) {
-
-    $('#adp-chart').highcharts({
-        title: {
-            text: nextProps.player.name,
-            x: -20 //center
-        },
-        subtitle: {
-            text: 'Average Draft Position',
-            x: -20
-        },
-        xAxis: {
-            categories: ['Dec 16', 'Jan 16']
-        },
-        yAxis: {
-            title: {
-                text: 'ADP'
-            },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
-            }],
-            reversed: true
-        },
-        tooltip: {
-            valueSuffix: ''
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0
-        },
-        series: [{
-            name: 'Dynasty League Football',
-            data: [nextProps.player.dlf_1215, nextProps.player.dlf_116]
-        }, {
-            name: 'Dynasty Nerds',
-            data: [nextProps.player.dn_1215, nextProps.player.dn_116]
-        }, {
-            name: 'Average',
-            data: [nextProps.player.avg_1215, nextProps.player.avg_116]
-        }]
-    });
+    this.buildChart(nextProps);
+    $('html,body').animate({ scrollTop: 0 }, 'slow');
   },
   render() {
 
@@ -120,6 +88,17 @@ Player = React.createClass({
     const ft = Math.floor(inches / 12);
     const i = inches % 12;
     return ft + "'" + i + "\"";
+  },
+  _renderTrendArrow (player) {
+    const trend = player.avg_1215 - player.avg_116;
+    if (trend > 0) {
+      return "glyphicon glyphicon-arrow-up green";
+    } else if (trend == 0) {
+      return "glyphicon glyphicon-resize-horizontal";
+    } else {
+      return "glyphicon glyphicon-arrow-down red";
+    }
+    
   },
   _buildSimilarPlayers(player) {
     const playerIndex = this.data.players.indexOf(player);
@@ -211,12 +190,12 @@ Player = React.createClass({
         <div className="row bootstrap snippet">
           <div className="panel-body inf-content">
               <div className="row">
-                  <div className="col-md-4">
+                  <div className="col-md-4 profile-panel">
                       <img alt="" title="" className="img-circle img-thumbnail isTooltip player-profile" src={imgLoc} data-original-title="Usuario" /> 
                       {stars}
                       <span className="roto-link"><a href={rotoLink}>Get the latest news on {player.name} at Rotoworld</a></span>
                   </div>
-                  <div className="col-md-6">
+                  <div className="col-md-6 profile-panel">
                       <h2>{player.name}</h2>
                       <div className="table-responsive">
                       <table className="table table-condensed table-responsive table-user-information">
@@ -323,6 +302,14 @@ Player = React.createClass({
                       </div>
                       <div className="panel-body text-center">
                         <strong><h3><span className="glyphicon glyphicon-signal"></span> {player.avg_116}</h3></strong>
+                      </div>
+                    </div>
+                    <div className="panel panel-default">
+                      <div className="panel-heading text-center">
+                         <h3 className="panel-title">Trend</h3>
+                      </div>
+                      <div className="panel-body text-center">
+                        <strong><h3><span className={this._renderTrendArrow(player)}></span> {Math.ceil(player.avg_1215 - player.avg_116)}</h3></strong>
                       </div>
                     </div>
                   </div>

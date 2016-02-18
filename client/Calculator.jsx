@@ -143,6 +143,21 @@ Calculator = React.createClass({
     document.title = "Trade Calculator";
   },
 
+  componentDidMount() {
+    // Update the page's title
+    let names = [];
+
+    for (var i=0; i < this.data.players.length; i++) {
+      names.push(this.data.players[i].name);
+    }
+
+    $('.playerList').on("focus", function(){
+      $(this).autocomplete({
+       source: names
+      });
+    });
+  },
+
   findPlayer(ref) {
     const pName = ReactDOM.findDOMNode(ref).value.trim();
     const player = this.data.players.filter(function ( p ) {

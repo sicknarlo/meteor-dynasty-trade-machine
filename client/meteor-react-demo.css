@@ -24,6 +24,7 @@
 	width: 350px;
 	margin: 0 auto;
 	display: block;
+    align: middle;
 }
 
 .rating-star {
@@ -52,5 +53,9 @@
 	display: block;
 	margin: 0 auto;
 	text-align: center;
+}
+
+.profile-panel {
+    padding-top: 50px;
 }
 
