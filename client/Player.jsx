@@ -44,11 +44,11 @@ ChartADP = React.createClass({
         }]
     });
   },
-  componentWillUpdate: function() {
+  componentWillReceiveProps: function(nextProps) {
 
     $('#adp-chart').highcharts({
         title: {
-            text: this.props.player.name,
+            text: nextProps.player.name,
             x: -20 //center
         },
         subtitle: {
@@ -80,13 +80,13 @@ ChartADP = React.createClass({
         },
         series: [{
             name: 'Dynasty League Football',
-            data: [this.props.player.dlf_1215, this.props.player.dlf_116]
+            data: [nextProps.player.dlf_1215, nextProps.player.dlf_116]
         }, {
             name: 'Dynasty Nerds',
-            data: [this.props.player.dn_1215, this.props.player.dn_116]
+            data: [nextProps.player.dn_1215, nextProps.player.dn_116]
         }, {
             name: 'Average',
-            data: [this.props.player.avg_1215, this.props.player.avg_116]
+            data: [nextProps.player.avg_1215, nextProps.player.avg_116]
         }]
     });
   },
