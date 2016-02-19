@@ -1,3 +1,5 @@
+const {Link} = ReactRouter;
+
 Index = React.createClass({
   componentWillMount() {
     // Update the page's title
@@ -16,59 +18,33 @@ Index = React.createClass({
 
         <div className="row">
             <div className="col-lg-12">
-                <h3>Latest Features</h3>
+                <h3>Tools</h3>
             </div>
         </div>
 
         <div className="row text-center">
 
-            <div className="col-md-3 col-sm-6 hero-feature">
+            <div className="col-md-6 col-sm-6 hero-feature">
                 <div className="thumbnail">
-                    <img src="http://placehold.it/800x500" alt=""/>
+                    <img className="fp-img" src="http://i.imgur.com/FiZOXVS.png?1" alt=""/>
                     <div className="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h3>Trade Calculator</h3>
+                        <p>Stuck on a trade? Think you can squeeze out a little more value? Don't take our word for it. Use aggregate ADP from multiple sources to evaluate a trade.</p>
                         <p>
-                            <a href="#" className="btn btn-primary">Buy Now!</a> <a href="#" className="btn btn-default">More Info</a>
+                            <a href="#" className="btn btn-primary">Evaluate a Trade</a>
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div className="col-md-3 col-sm-6 hero-feature">
+            <div className="col-md-6 col-sm-6 hero-feature">
                 <div className="thumbnail">
-                    <img src="http://placehold.it/800x500" alt=""/>
+                    <img className="fp-image" src="http://i.imgur.com/jyrj6gK.png?1" alt=""/>
                     <div className="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h3>Player Database</h3>
+                        <p>Check out the data behind the calculator. Player pages provide historical ADP and more information to help you make the right decisions.</p>
                         <p>
-                            <a href="#" className="btn btn-primary">Buy Now!</a> <a href="#" className="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-md-3 col-sm-6 hero-feature">
-                <div className="thumbnail">
-                    <img src="http://placehold.it/800x500" alt=""/>
-                    <div className="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" className="btn btn-primary">Buy Now!</a> <a href="#" className="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-md-3 col-sm-6 hero-feature">
-                <div className="thumbnail">
-                    <img src="http://placehold.it/800x500" alt=""/>
-                    <div className="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" className="btn btn-primary">Buy Now!</a> <a href="#" className="btn btn-default">More Info</a>
+                            <Link to={"/calculator"} className="btn btn-primary">Check out the Database</Link>
                         </p>
                     </div>
                 </div>

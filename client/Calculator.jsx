@@ -115,7 +115,7 @@ Results = React.createClass({
               <h3>Closest Player: <Link key={closestPlayer._id} to={"/items/" + closestPlayer.id}>{closestPlayer.name}</Link> | {closestPlayer.value}</h3> 
             </div>
             <div className="col-md-6 col-md-offset-3 text-center">
-              <button className="btn btn-primary btn-lg" onClick={this.props.clearEvent}>Clear</button>
+              <button className="btn btn-primary btn-lg" onClick={this.props.clearEvent}>Clear this Trade</button>
             </div>
           </div>
         </div>
@@ -369,9 +369,6 @@ Calculator = React.createClass({
         <div className="row">
           <div className="col-xs-12 text-center">
             <button className="btn btn-primary btn-lg" onClick={this.evaluateTrade}>Evaluate Trade</button>
-          </div>
-          <div className="col-xs-12 text-center">
-            <button className="btn btn-primary btn-lg" onClick={this.clearInput}>Clear</button>
           </div>
         </div>
       </div>
