@@ -40,7 +40,7 @@ Items = React.createClass({
           <tbody>
             {this.data.items.map((item) => {
             return (<tr>
-                      <td><Link to={"/items/" + item._id}>{item.name}</Link></td>
+                      <td><Link to={"/items/" + item.id}>{item.name}</Link></td>
                       <td>{item.position}</td>
                       <td>{item.avg_116}</td>
                       <td>{Math.ceil(item.avg_1215 - item.avg_116)} <span className={this._renderTrendArrow(item)}></span></td>

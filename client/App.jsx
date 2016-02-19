@@ -1,6 +1,13 @@
 // A container component for basic views to be rendered in
 App = React.createClass({
+  mixins: [ReactMeteorData],
+  getMeteorData() {
+    return {
+      players: Players.find({}, {sort: {avg_116: 1}}).fetch()
+    };
+  },
   render() {
+
     return (
       <div>
         <AppNavBar/>

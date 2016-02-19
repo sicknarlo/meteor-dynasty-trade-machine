@@ -1,5 +1,13 @@
 /* CSS declarations go here */
 
+/*!
+ * Start Bootstrap - Heroic Features HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+
+
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700");/*!
  * bootswatch v3.3.6
  * Homepage: http://bootswatch.com
@@ -57,5 +65,27 @@
 
 .profile-panel {
     padding-top: 50px;
+}
+
+.hero-spacer {
+    margin-top: 50px;
+    background-color: #3399f3;
+}
+
+.hero-feature {
+    margin-bottom: 30px;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+.hero-text {
+	color: white;
+}
+
+.hero-header {
+	color: white;
+	font-size: 63px;
 }
 
