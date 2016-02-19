@@ -1,11 +1,32 @@
 const {Link} = ReactRouter;
 
-Index = React.createClass({
+Index = React.createClass({mixins: [ReactMeteorData],
+  getMeteorData() {
+    return {
+      players: Players.find({avg_116: { $lt: 101 }}, {sort: {trend: 1}}).fetch()
+    };
+  },
   componentWillMount() {
     // Update the page's title
     document.title = "Dynasty Trade Machine";
   },
   render() {
+    const fallingPlayers = this.data.players.slice(0, 10);
+    const risingPlayers = this.data.players.slice(this.data.players.length - 11, -1);
+    const risersTable = risingPlayers.reverse().map((p) => {
+                            return (<tr>
+                                      <td><Link to={"/items/" + p.id}>{p.name}</Link></td>
+                                      <td>{p.avg_116}</td>
+                                      <td>{p.trend}</td>
+                                    </tr>);
+                        });
+    const fallersTable = fallingPlayers.map((p) => {
+                            return (<tr>
+                                      <td><Link to={"/items/" + p.id}>{p.name}</Link></td>
+                                      <td>{p.avg_116}</td>
+                                      <td>{p.trend}</td>
+                                    </tr>);
+                        });
     return (
       <div>
 
@@ -31,7 +52,7 @@ Index = React.createClass({
                         <h3>Trade Calculator</h3>
                         <p>Stuck on a trade? Think you can squeeze out a little more value? Don't take our word for it. Use aggregate ADP from multiple sources to evaluate a trade.</p>
                         <p>
-                            <a href="#" className="btn btn-primary">Evaluate a Trade</a>
+                            <Link to={"/calculator"} className="btn btn-primary">Evaluate a Trade</Link>
                         </p>
                     </div>
                 </div>
@@ -44,9 +65,42 @@ Index = React.createClass({
                         <h3>Player Database</h3>
                         <p>Check out the data behind the calculator. Player pages provide historical ADP and more information to help you make the right decisions.</p>
                         <p>
-                            <Link to={"/calculator"} className="btn btn-primary">Check out the Database</Link>
+                            <Link to={"/items"} className="btn btn-primary">Check out the Database</Link>
                         </p>
                     </div>
+                </div>
+            </div>
+
+            <div className="row">
+                <div className="col-md-6">
+                    <h3>Top 100 Risers</h3>
+                    <table className="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>ADP</th>
+                          <th>3 Month Trend</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {risersTable}
+                      </tbody>
+                    </table>
+                </div>
+                <div className="col-md-6">
+                    <h3>Top 100 Fallers</h3>
+                    <table className="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>ADP</th>
+                          <th>3 Month Trend</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {fallersTable}
+                      </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -57,7 +111,7 @@ Index = React.createClass({
         <footer>
             <div className="row">
                 <div className="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; Dynasty Trade Machine 2016</p>
                 </div>
             </div>
         </footer>

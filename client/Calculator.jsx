@@ -109,10 +109,10 @@ Results = React.createClass({
           </div>
           <div className="row">
             <div className="col-xs-12 text-center">
-              <h3>Trade Rating: {tradeRating}%</h3> 
+              <h3>Trade Fairness: {tradeRating}%</h3> 
             </div>
             <div className="col-xs-12 text-center">
-              <h3>Closest Player: <Link key={closestPlayer._id} to={"/items/" + closestPlayer.id}>{closestPlayer.name}</Link> | {closestPlayer.value}</h3> 
+              <h3>The difference is equivalent to <Link key={closestPlayer._id} to={"/items/" + closestPlayer.id}>{closestPlayer.name}</Link> with an ADP of {closestPlayer.value}</h3> 
             </div>
             <div className="col-md-6 col-md-offset-3 text-center">
               <button className="btn btn-primary btn-lg" onClick={this.props.clearEvent}>Clear this Trade</button>
@@ -263,6 +263,17 @@ Calculator = React.createClass({
                                 </div> : "";
     return (
       <div>
+          <div className="row">
+              <div className="col-md-6 col-md-offset-3">
+                <div className="panel-body inf-content">
+                    <div className="col-md-12">
+                        <h3>How to use:</h3>
+                        <p>Add the players being exchanged to the corresponding teams in the inputs below. The calculator will output their values, as well as how much value each team receives and a player that might make the trade more fair.</p>
+                        <p>You can also add draft picks. 2017 picks are listed as absolute picks, i.e. Pick 1 - Pick 48. Future picks can be found by using the year of the pick (out to 2018) and the round (up to 4th), i.e. 2017 1st or 2018 4th.</p>
+                    </div>
+                </div>
+              </div>
+          </div>
         {resultsComponent}
         <div className="row">
           <div className="col-md-6">
