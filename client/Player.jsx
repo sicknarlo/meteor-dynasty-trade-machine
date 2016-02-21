@@ -186,7 +186,7 @@ Player = React.createClass({
           return p.id == pId;
       })[0];
 
-      const imgLoc = player.espn_id == "PICK" ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" 
+      const imgLoc = player.position == "PICK" ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" 
                                                : "http://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/" + player.espn_id + ".png&w=350&h=254";
 
       const experience = player.draft_year == "PICK" ? "PICK" : this._calculateAge(new Date(player.draft_year - 1, 4, 1)) + " years";

@@ -32,7 +32,7 @@ Index = React.createClass({mixins: [ReactMeteorData],
 
         <header className="jumbotron hero-spacer">
             <span className="hero-header">The Dynasty Trade Machine</span>
-            <p className="hero-text">Helping dynasty fantasy football players use data and win championships.</p>
+            <p className="hero-text">Win trades. Win championships.</p>
         </header>
 
         <hr/>
@@ -77,9 +77,9 @@ Index = React.createClass({mixins: [ReactMeteorData],
                     <table className="table table-hover">
                       <thead>
                         <tr>
-                          <th>Name</th>
-                          <th>ADP</th>
-                          <th>Trend</th>
+                          <th className="th-center">Name</th>
+                          <th className="th-center">ADP</th>
+                          <th className="th-center">Trend</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -92,9 +92,9 @@ Index = React.createClass({mixins: [ReactMeteorData],
                     <table className="table table-hover">
                       <thead>
                         <tr>
-                          <th>Name</th>
-                          <th>ADP</th>
-                          <th>Trend</th>
+                          <th className="th-center">Name</th>
+                          <th className="th-center">ADP</th>
+                          <th className="th-center">Trend</th>
                         </tr>
                       </thead>
                       <tbody>

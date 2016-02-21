@@ -6,15 +6,15 @@ const {
 // Navigation bar for the public app
 AppNavBar = React.createClass({
   render() {
+        // <ul className="nav navbar-nav navbar-right">
+        //   <NavLink to="/signin">Sign In</NavLink>
+        // </ul>
     return (
       <NavBar brandRoute="/">
         <ul className="nav navbar-nav">
           <NavLink to="/" index>Home</NavLink>
           <NavLink to="/players">Players</NavLink>
           <NavLink to="/calculator">Calculator</NavLink>
-        </ul>
-        <ul className="nav navbar-nav navbar-right">
-          <NavLink to="/signin">Sign In</NavLink>
         </ul>
       </NavBar>
     );
