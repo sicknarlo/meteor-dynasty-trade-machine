@@ -112,7 +112,7 @@ Results = React.createClass({
               <h3>Trade Fairness: {tradeRating}%</h3> 
             </div>
             <div className="col-xs-12 text-center">
-              <h3>The difference is equivalent to <Link key={closestPlayer._id} to={"/items/" + closestPlayer.id}>{closestPlayer.name}</Link> with an ADP of {closestPlayer.value}</h3> 
+              <h3>The difference is equivalent to <Link key={closestPlayer._id} to={"/items/" + closestPlayer.id}>{closestPlayer.name}</Link> with an ADP of {closestPlayer.avg_116}</h3> 
             </div>
             <div className="col-md-6 col-md-offset-3 text-center">
               <button className="btn btn-primary btn-lg" onClick={this.props.clearEvent}>Clear this Trade</button>

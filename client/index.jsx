@@ -50,7 +50,7 @@ Index = React.createClass({mixins: [ReactMeteorData],
                     <img className="fp-img" src="http://i.imgur.com/FiZOXVS.png?1" alt=""/>
                     <div className="caption">
                         <h3>Trade Calculator</h3>
-                        <p>Stuck on a trade? Think you can squeeze out a little more value? Don't take our word for it. Use aggregate ADP from multiple sources to evaluate a trade.</p>
+                        <p>Stuck on a trade? Don't take our word for it. Use aggregate ADP from multiple sources to evaluate a trade.</p>
                         <p>
                             <Link to={"/calculator"} className="btn btn-primary">Evaluate a Trade</Link>
                         </p>
@@ -63,7 +63,7 @@ Index = React.createClass({mixins: [ReactMeteorData],
                     <img className="fp-image" src="http://i.imgur.com/jyrj6gK.png?1" alt=""/>
                     <div className="caption">
                         <h3>Player Database</h3>
-                        <p>Check out the data behind the calculator. Player pages provide historical ADP and more information to help you make the right decisions.</p>
+                        <p>Player pages provide historical ADP and more information to help you make the right decisions.</p>
                         <p>
                             <Link to={"/items"} className="btn btn-primary">Check out the Database</Link>
                         </p>
@@ -79,7 +79,7 @@ Index = React.createClass({mixins: [ReactMeteorData],
                         <tr>
                           <th>Name</th>
                           <th>ADP</th>
-                          <th>3 Month Trend</th>
+                          <th>Trend</th>
                         </tr>
                       </thead>
                       <tbody>
