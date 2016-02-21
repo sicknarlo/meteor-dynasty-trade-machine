@@ -37,16 +37,16 @@ ChartADP = React.createClass({
             borderWidth: 0
         },
         series: [{
-            name: 'Dynasty League Football',
+            name: 'DLF',
             data: [props.player.dlf_116,props.player.dlf_1215,props.player.dlf_1115,props.player.dlf_1015, props.player.dlf_915]
         }, {
-            name: 'Dynasty Nerds',
+            name: 'DN',
             data: [props.player.dn_116, props.player.dn_1215]
         },{
-            name: 'Fantasy Pros',
+            name: 'FP',
             data: [props.player.fp_116]
         }, {
-            name: 'Average',
+            name: 'AVG',
             data: [props.player.avg_116,props.player.avg_1215,props.player.avg_1115,props.player.avg_1015, props.player.avg_915]
         }]
     });
@@ -79,7 +79,7 @@ Player = React.createClass({
   },
   componentWillMount() {
     // Update the page's title
-    document.title = "funk";
+    document.title = this.data.player.name ? this.data.player.name : "Player";
   },
   _calculateAge(birthday) { // birthday is a date
     var ageDifMs = Date.now() - birthday.getTime();
@@ -128,41 +128,51 @@ Player = React.createClass({
     if (adp < 10) {
       return (
           <ul title="Ratings" className="list-inline ratings text-center">
-            <li><a href="#"><span className="rating-star glyphicon glyphicon-star"></span></a></li>
-            <li><a href="#"><span className="rating-star glyphicon glyphicon-star"></span></a></li>
-            <li><a href="#"><span className="rating-star glyphicon glyphicon-star"></span></a></li>
-            <li><a href="#"><span className="rating-star glyphicon glyphicon-star"></span></a></li>
-            <li><a href="#"><span className="rating-star glyphicon glyphicon-star"></span></a></li>
+            <li><span className="rating-star glyphicon glyphicon-star"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star"></span></li>
           </ul>
         )
     } else if (adp < 25) {
        return (
           <ul title="Ratings" className="list-inline ratings text-center">
-            <li><a href="#"><span className="rating-star glyphicon glyphicon-star"></span></a></li>
-            <li><a href="#"><span className="rating-star glyphicon glyphicon-star"></span></a></li>
-            <li><a href="#"><span className="rating-star glyphicon glyphicon-star"></span></a></li>
-            <li><a href="#"><span className="rating-star glyphicon glyphicon-star"></span></a></li>
+            <li><span className="rating-star glyphicon glyphicon-star"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star-empty"></span></li>
           </ul>
         )
     } else if (adp < 50) {
        return (
           <ul title="Ratings" className="list-inline ratings text-center">
-            <li><a href="#"><span className="rating-star glyphicon glyphicon-star"></span></a></li>
-            <li><a href="#"><span className="rating-star glyphicon glyphicon-star"></span></a></li>
-            <li><a href="#"><span className="rating-star glyphicon glyphicon-star"></span></a></li>
+            <li><span className="rating-star glyphicon glyphicon-star"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star-empty"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star-empty"></span></li>
           </ul>
         )
     } else if (adp < 100) {
        return (
           <ul title="Ratings" className="list-inline ratings text-center">
-            <li><a href="#"><span className="rating-star glyphicon glyphicon-star"></span></a></li>
-            <li><a href="#"><span className="rating-star glyphicon glyphicon-star"></span></a></li>
+            <li><span className="rating-star glyphicon glyphicon-star"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star-empty"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star-empty"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star-empty"></span></li>
           </ul>
         )
     } else {
        return (
           <ul title="Ratings" className="list-inline ratings text-center">
-            <li><a href="#"><span className="rating-star glyphicon glyphicon-star"></span></a></li>
+            <li><span className="rating-star glyphicon glyphicon-star"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star-empty"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star-empty"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star-empty"></span></li>
+            <li><span className="rating-star glyphicon glyphicon-star-empty"></span></li>
           </ul>
         )
     }
@@ -342,14 +352,14 @@ Player = React.createClass({
                   {similarPlayers.map((p) => {
                     if (p == player) {
                        return (<tr className="info">
-                            <td><Link to={"/items/" + p.id}>{p.name}</Link></td>
+                            <td><Link to={"/players/" + p.id}>{p.name}</Link></td>
                             <td>{p.position}</td>
                             <td>{p.avg_116}</td>
                             <td>{p.value}</td>
                           </tr>);
                     } else {
                         return (<tr>
-                                  <td><Link to={"/items/" + p.id}>{p.name}</Link></td>
+                                  <td><Link to={"/players/" + p.id}>{p.name}</Link></td>
                                   <td>{p.position}</td>
                                   <td>{p.avg_116}</td>
                                   <td>{p.value}</td>

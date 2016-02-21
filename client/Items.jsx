@@ -27,28 +27,30 @@ Items = React.createClass({
 
     return (
       <div className="container">
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Position</th>
-              <th>ADP</th>
-              <th>3 Month Trend</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.data.items.map((item) => {
-            return (<tr>
-                      <td><Link to={"/items/" + item.id}>{item.name}</Link></td>
-                      <td>{item.position}</td>
-                      <td>{item.avg_116}</td>
-                      <td>{Math.ceil(item.avg_1215 - item.avg_116)} <span className={this._renderTrendArrow(item)}></span></td>
-                      <td>{item.value}</td>
-                    </tr>);
-          })}
-          </tbody>
-        </table>
+        <div className="col-md-12">
+          <table className="table table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>ADP</th>
+                <th>Trend</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.data.items.map((item) => {
+              return (<tr>
+                        <td><Link to={"/players/" + item.id}>{item.name}</Link></td>
+                        <td>{item.position}</td>
+                        <td>{item.avg_116}</td>
+                        <td>{Math.ceil(item.avg_1215 - item.avg_116)} <span className={this._renderTrendArrow(item)}></span></td>
+                        <td>{item.value}</td>
+                      </tr>);
+            })}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

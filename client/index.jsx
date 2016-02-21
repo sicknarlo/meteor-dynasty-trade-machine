@@ -15,14 +15,14 @@ Index = React.createClass({mixins: [ReactMeteorData],
     const risingPlayers = this.data.players.slice(this.data.players.length - 11, -1);
     const risersTable = risingPlayers.reverse().map((p) => {
                             return (<tr>
-                                      <td><Link to={"/items/" + p.id}>{p.name}</Link></td>
+                                      <td><Link to={"/players/" + p.id}>{p.name}</Link></td>
                                       <td>{p.avg_116}</td>
                                       <td>{p.trend}</td>
                                     </tr>);
                         });
     const fallersTable = fallingPlayers.map((p) => {
                             return (<tr>
-                                      <td><Link to={"/items/" + p.id}>{p.name}</Link></td>
+                                      <td><Link to={"/players/" + p.id}>{p.name}</Link></td>
                                       <td>{p.avg_116}</td>
                                       <td>{p.trend}</td>
                                     </tr>);
@@ -65,7 +65,7 @@ Index = React.createClass({mixins: [ReactMeteorData],
                         <h3>Player Database</h3>
                         <p>Player pages provide historical ADP and more information to help you make the right decisions.</p>
                         <p>
-                            <Link to={"/items"} className="btn btn-primary">Check out the Database</Link>
+                            <Link to={"/players"} className="btn btn-primary">Check out the Database</Link>
                         </p>
                     </div>
                 </div>
@@ -94,7 +94,7 @@ Index = React.createClass({mixins: [ReactMeteorData],
                         <tr>
                           <th>Name</th>
                           <th>ADP</th>
-                          <th>3 Month Trend</th>
+                          <th>Trend</th>
                         </tr>
                       </thead>
                       <tbody>
