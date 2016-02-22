@@ -269,7 +269,7 @@ Calculator = React.createClass({
                     <div className="col-md-12">
                         <h3>How to use:</h3>
                         <p>Add the players being exchanged to the corresponding teams in the inputs below. The calculator will output their values, as well as how much value each team receives and a player that might make the trade more fair.</p>
-                        <p>You can also add draft picks. 2017 picks are listed as absolute picks, i.e. Pick 1 - Pick 48. Future picks can be found by using the year of the pick (out to 2018) and the round (up to 4th), i.e. 2017 1st or 2018 4th.</p>
+                        <p>You can also add draft picks. 2016 picks are listed as absolute picks, i.e. Pick 1 - Pick 48. Future picks can be found by using the year of the pick (out to 2018) and the round (up to 4th), i.e. 2017 1st or 2018 4th.</p>
                     </div>
                 </div>
               </div>

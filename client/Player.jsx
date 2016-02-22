@@ -37,13 +37,13 @@ ChartADP = React.createClass({
             borderWidth: 0
         },
         series: [{
-            name: 'DLF',
+            name: 'ADP 1',
             data: [props.player.dlf_116,props.player.dlf_1215,props.player.dlf_1115,props.player.dlf_1015, props.player.dlf_915]
         }, {
-            name: 'DN',
+            name: 'ADP 2',
             data: [props.player.dn_116, props.player.dn_1215]
         },{
-            name: 'FP',
+            name: 'ADP 3',
             data: [props.player.fp_116]
         }, {
             name: 'AVG',
