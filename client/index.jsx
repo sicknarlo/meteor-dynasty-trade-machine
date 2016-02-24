@@ -17,7 +17,7 @@ Index = React.createClass({mixins: [ReactMeteorData],
                             return (<tr>
                                       <td><Link to={"/players/" + p.id}>{p.name}</Link></td>
                                       <td>{p.avg_116}</td>
-                                      <td>{p.trend}</td>
+                                      <td>+{p.trend}</td>
                                     </tr>);
                         });
     const fallersTable = fallingPlayers.map((p) => {
@@ -32,7 +32,7 @@ Index = React.createClass({mixins: [ReactMeteorData],
 
         <header className="jumbotron hero-spacer">
             <span className="hero-header">The Dynasty Trade Machine</span>
-            <p className="hero-text">Win trades. Win championships.</p>
+            <p className="hero-text">Win trades. Win championships. Updated 2/22/2016</p>
         </header>
 
         <hr/>

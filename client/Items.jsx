@@ -12,7 +12,7 @@ Items = React.createClass({
     document.title = "Players";
   },
   _renderTrendArrow (player) {
-    const trend = player.avg_1215 - player.avg_116;
+    const trend = Math.ceil(player.avg_1215 - player.avg_116);
     if (trend > 0) {
       return "glyphicon glyphicon-arrow-up green";
     } else if (trend == 0) {

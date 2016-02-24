@@ -37,15 +37,6 @@ ChartADP = React.createClass({
             borderWidth: 0
         },
         series: [{
-            name: 'ADP 1',
-            data: [props.player.dlf_116,props.player.dlf_1215,props.player.dlf_1115,props.player.dlf_1015, props.player.dlf_915]
-        }, {
-            name: 'ADP 2',
-            data: [props.player.dn_116, props.player.dn_1215]
-        },{
-            name: 'ADP 3',
-            data: [props.player.fp_116]
-        }, {
             name: 'AVG',
             data: [props.player.avg_116,props.player.avg_1215,props.player.avg_1115,props.player.avg_1015, props.player.avg_915]
         }]
@@ -80,11 +71,15 @@ Player = React.createClass({
   componentWillMount() {
     // Update the page's title
     document.title = this.data.player.name ? this.data.player.name : "Player";
+
   },
   _calculateAge(birthday) { // birthday is a date
     var ageDifMs = Date.now() - birthday.getTime();
     var ageDate = new Date(ageDifMs); // miliseconds from epoch
     return Math.abs(ageDate.getUTCFullYear() - 1970);
+  },
+  componentWillUpdate() {
+    
   },
   _renderheight(inches) {
     const ft = Math.floor(inches / 12);
@@ -92,10 +87,10 @@ Player = React.createClass({
     return ft + "'" + i + "\"";
   },
   _renderTrendArrow (player) {
-    const trend = player.avg_1215 - player.avg_116;
+    const trend = Math.ceil(player.avg_1215 - player.avg_116);
     if (trend > 0) {
       return "glyphicon glyphicon-arrow-up green";
-    } else if (trend == 0) {
+    } else if (trend === 0) {
       return "glyphicon glyphicon-resize-horizontal";
     } else {
       return "glyphicon glyphicon-arrow-down red";
@@ -197,7 +192,9 @@ Player = React.createClass({
       const weight = player.weight == "PICK" ? "PICK" : player.weight + "lbs";
       const hideRoto = player.rotoworld_id == "PICK" ? 'hidden' : "roto-link";
       const rotoLink = player.rotoworld_id == "PICK" ? '' : "http://www.rotoworld.com/player/nfl/" + player.rotoworld_id;
-      const twitterLink = "https://twitter.com/" + player.twitter_username
+      const twitterLink = "https://twitter.com/" + player.twitter_username;
+      const pName = player.name ? player.name.split(" ") : "";
+      const rssURL = "https://www.fantasysp.com/rss/nfl/player!" + pName[0] + "_" + pName[1] + "/";
 
       return (
         
