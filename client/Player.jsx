@@ -3,6 +3,15 @@ const {Link} = ReactRouter;
 ChartADP = React.createClass({
   buildChart(status) {
     const props = status == "this" ? this.props : status;
+    const player = props.player
+    const data = [
+                  player.feb_16,
+                  player.jan_16,
+                  player.dec_15,
+                  player.nov_15,
+                  player.oct_15,
+                  player.sept_15
+                                ]
     $('#adp-chart').highcharts({
         title: {
             text: props.player.name,
@@ -13,7 +22,7 @@ ChartADP = React.createClass({
             x: -20
         },
         xAxis: {
-            categories: ['Jan 16', 'Dec 15', 'Nov 15', 'Oct 15', 'Sept 15'],
+            categories: ['Feb 16', 'Jan 16', 'Dec 15', 'Nov 15', 'Oct 15', 'Sept 15'],
             reversed: true
         },
         yAxis: {
@@ -38,7 +47,7 @@ ChartADP = React.createClass({
         },
         series: [{
             name: 'AVG',
-            data: [props.player.avg_116,props.player.avg_1215,props.player.avg_1115,props.player.avg_1015, props.player.avg_915]
+            data: data
         }]
     });
   },
@@ -64,7 +73,7 @@ Player = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      players: Players.find({}, {sort: {avg_116: 1}}).fetch(),
+      players: Players.find({}, {sort: {feb_16: 1}}).fetch(),
       player: Players.find({id: parseInt(this.props.params.playerId)}).fetch()
     };
   },
@@ -87,7 +96,7 @@ Player = React.createClass({
     return ft + "'" + i + "\"";
   },
   _renderTrendArrow (player) {
-    const trend = Math.ceil(player.avg_1215 - player.avg_116);
+    const trend = player.trend;
     if (trend > 0) {
       return "glyphicon glyphicon-arrow-up green";
     } else if (trend === 0) {
@@ -186,7 +195,7 @@ Player = React.createClass({
 
       const experience = player.draft_year == "PICK" ? "PICK" : this._calculateAge(new Date(player.draft_year - 1, 4, 1)) + " years";
       const age = player.birthdate == "PICK" ? "PICK" : this._calculateAge(new Date(player.birthdate * 1000));
-      const stars = this._renderStars(player.avg_116);
+      const stars = this._renderStars(player.feb_16);
       const similarPlayers = this._buildSimilarPlayers(player);
       const height = player.height == "PICK" ? "PICK" : this._renderheight(player.height);
       const weight = player.weight == "PICK" ? "PICK" : player.weight + "lbs";
@@ -313,15 +322,15 @@ Player = React.createClass({
                           <h3 className="panel-title">ADP</h3>
                         </div>
                         <div className="panel-body text-center">
-                          <strong><h3><span className="glyphicon glyphicon-signal"></span> {player.avg_116}</h3></strong>
+                          <strong><h3><span className="glyphicon glyphicon-signal"></span> {player.feb_16}</h3></strong>
                         </div>
                       </div>
                       <div className="panel panel-default">
                         <div className="panel-heading text-center">
-                           <h3 className="panel-title">Trend</h3>
+                           <h3 className="panel-title">3 Mo. Trend</h3>
                         </div>
                         <div className="panel-body text-center">
-                          <strong><h3><span className={this._renderTrendArrow(player)}></span> {Math.ceil(player.avg_1215 - player.avg_116)}</h3></strong>
+                          <strong><h3><span className={this._renderTrendArrow(player)}></span> {player.trend}</h3></strong>
                         </div>
                       </div>
                     </div>
@@ -351,14 +360,14 @@ Player = React.createClass({
                        return (<tr className="info">
                             <td><Link to={"/players/" + p.id}>{p.name}</Link></td>
                             <td>{p.position}</td>
-                            <td>{p.avg_116}</td>
+                            <td>{p.feb_16}</td>
                             <td>{p.value}</td>
                           </tr>);
                     } else {
                         return (<tr>
                                   <td><Link to={"/players/" + p.id}>{p.name}</Link></td>
                                   <td>{p.position}</td>
-                                  <td>{p.avg_116}</td>
+                                  <td>{p.feb_16}</td>
                                   <td>{p.value}</td>
                                 </tr>);
                       }

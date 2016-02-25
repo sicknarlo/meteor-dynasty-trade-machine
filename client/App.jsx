@@ -3,7 +3,7 @@ App = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      players: Players.find({}, {sort: {avg_116: 1}}).fetch()
+      players: Players.find({}, {sort: {feb_16: 1}}).fetch()
     };
   },
   render() {

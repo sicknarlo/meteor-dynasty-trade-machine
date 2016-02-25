@@ -3,7 +3,7 @@ const {Link} = ReactRouter;
 Index = React.createClass({mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      players: Players.find({avg_116: { $lt: 101 }}, {sort: {trend: 1}}).fetch()
+      players: Players.find({feb_16: { $lt: 101 }}, {sort: {trend: 1}}).fetch()
     };
   },
   componentWillMount() {
@@ -16,14 +16,14 @@ Index = React.createClass({mixins: [ReactMeteorData],
     const risersTable = risingPlayers.reverse().map((p) => {
                             return (<tr>
                                       <td><Link to={"/players/" + p.id}>{p.name}</Link></td>
-                                      <td>{p.avg_116}</td>
+                                      <td>{p.feb_16}</td>
                                       <td>+{p.trend}</td>
                                     </tr>);
                         });
     const fallersTable = fallingPlayers.map((p) => {
                             return (<tr>
                                       <td><Link to={"/players/" + p.id}>{p.name}</Link></td>
-                                      <td>{p.avg_116}</td>
+                                      <td>{p.feb_16}</td>
                                       <td>{p.trend}</td>
                                     </tr>);
                         });
@@ -32,7 +32,7 @@ Index = React.createClass({mixins: [ReactMeteorData],
 
         <header className="jumbotron hero-spacer">
             <span className="hero-header">The Dynasty Trade Machine</span>
-            <p className="hero-text">Win trades. Win championships. | Updated 2/24/2016</p>
+            <p className="hero-text">Win trades. Win championships. | Updated 2/25/2016</p>
         </header>
 
         <hr/>
@@ -73,7 +73,7 @@ Index = React.createClass({mixins: [ReactMeteorData],
 
             <div className="row">
                 <div className="col-md-6">
-                    <h3>Top 100 Risers</h3>
+                    <h3>3 Month Risers</h3>
                     <table className="table table-hover">
                       <thead>
                         <tr>
@@ -88,7 +88,7 @@ Index = React.createClass({mixins: [ReactMeteorData],
                     </table>
                 </div>
                 <div className="col-md-6">
-                    <h3>Top 100 Fallers</h3>
+                    <h3>3 Month Fallers</h3>
                     <table className="table table-hover">
                       <thead>
                         <tr>
