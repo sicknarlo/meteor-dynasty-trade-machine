@@ -15,12 +15,12 @@ Items = React.createClass({
     document.title = "Players";
   },
   filterPlayers() {
-    const filter = this.refs.filter ? this.refs.filter.value : "";
+    const filter = this.refs.filter ? this.refs.filter.value.toLowerCase() : "";
     const playerList = this.data.items;
 
     if (filter != "") {
       const filteredPlayerList = playerList.filter((p) => {
-                              return p.name.includes(filter)
+                              return p.name.toLowerCase().includes(filter)
                             })
       this.setState({players: filteredPlayerList})
     } else {
