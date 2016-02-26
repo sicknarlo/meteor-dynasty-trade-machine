@@ -17,7 +17,6 @@ Items = React.createClass({
   filterPlayers() {
     const filter = this.refs.filter ? this.refs.filter.value : "";
     const playerList = this.data.items;
-    debugger;
 
     if (filter != "") {
       const filteredPlayerList = playerList.filter((p) => {
