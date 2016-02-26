@@ -67,10 +67,10 @@
     padding-top: 50px;
 }
 
-.hero-spacer {
+/*.hero-spacer {
     margin-top: 50px;
     background-color: #3399f3;
-}
+}*/
 
 .hero-feature {
     margin-bottom: 30px;
@@ -80,12 +80,12 @@ footer {
     margin: 50px 0;
 }
 
-.hero-text {
+/*.hero-text {
 	color: white;
-}
+}*/
 
 .hero-header {
-	color: white;
+	/*color: white;*/
 	font-size: 63px;
 }
 
@@ -98,4 +98,4 @@ footer {
 .feedEkList li:last-child{border-bottom:none;}
 .itemTitle a{font-weight:bold; color:#4EBAFF !important; text-decoration:none }
 .itemTitle a:hover{ text-decoration:underline }
-.itemDate{font-size:11px;color:#AAAAAA;} 
+.itemDate{font-size:11px;color:#AAAAAA;}

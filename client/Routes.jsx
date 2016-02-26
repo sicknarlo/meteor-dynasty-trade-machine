@@ -17,6 +17,7 @@ Routes = React.createClass({
           <Route path="players" component={Items}/>
           <Route path="players/:playerId" component={Player}/>
           <Route path="calculator" component={Calculator}/>
+          <Route path="faq" component={Faq}/>
           <Route path="signin" component={SignIn}/>
         </Route>
         <Route path="/app" component={AuthenticatedApp}>

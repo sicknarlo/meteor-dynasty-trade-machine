@@ -15,6 +15,7 @@ AppNavBar = React.createClass({
           <NavLink to="/" index>Home</NavLink>
           <NavLink to="/players">Players</NavLink>
           <NavLink to="/calculator">Calculator</NavLink>
+          <NavLink to="/faq">F.A.Q.</NavLink>
         </ul>
       </NavBar>
     );
