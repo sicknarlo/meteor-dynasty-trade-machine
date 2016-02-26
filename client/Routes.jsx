@@ -8,9 +8,6 @@ const {
 
 const browserHistory = history.createHistory();
           // <Route path="faq" component={Faq}/>
-          // <Route path="calculator-2qb" component={Calculator2QB}/>
-          // <Route path="players-2qb" component={PlayersSuperflex}/>
-          // <Route path="players-2qb/:playerId" component={Player2QB}/>
 
 Routes = React.createClass({
   render() {
@@ -21,6 +18,9 @@ Routes = React.createClass({
           <Route path="players" component={Items}/>
           <Route path="players/:playerId" component={Player}/>
           <Route path="calculator" component={Calculator}/>
+          <Route path="calculator-2qb" component={Calculator2QB}/>
+          <Route path="players-2qb" component={PlayersSuperflex}/>
+          <Route path="players-2qb/:playerId" component={Player2QB}/>
           <Route path="signin" component={SignIn}/>
         </Route>
         <Route path="/app" component={AuthenticatedApp}>
