@@ -29,6 +29,7 @@ Items = React.createClass({
   },
   componentDidMount() {
     this.setState({ players: this.data.items })
+    this.forceUpdate();
   },
   render() {
 
