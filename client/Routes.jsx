@@ -7,7 +7,6 @@ const {
 } = ReactRouter;
 
 const browserHistory = history.createHistory();
-          // <Route path="faq" component={Faq}/>
 
 Routes = React.createClass({
   render() {
@@ -21,6 +20,7 @@ Routes = React.createClass({
           <Route path="calculator-2qb" component={Calculator2QB}/>
           <Route path="players-2qb" component={PlayersSuperflex}/>
           <Route path="players-2qb/:playerId" component={Player2QB}/>
+          <Route path="faq" component={Faq}/>
           <Route path="signin" component={SignIn}/>
         </Route>
         <Route path="/app" component={AuthenticatedApp}>
