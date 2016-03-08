@@ -43,7 +43,7 @@ Results = React.createClass({
 
     let closestPlayer = this.props.players[0];
     
-    if (Math.abs(team1ValueGained) < 3000) {
+    if (Math.abs(team1ValueGained) < 10000) {
       for (var i=0; i < this.props.players.length; i++) {
         if (Math.abs(Math.abs(team1ValueGained) - this.props.players[i].value) < Math.abs(Math.abs(team1ValueGained) - closestPlayer.value)) {
           closestPlayer = this.props.players[i];
