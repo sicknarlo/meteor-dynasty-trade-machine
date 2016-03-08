@@ -39,7 +39,7 @@ PlayersSuperflex = React.createClass({
             <input ref="filter" className="form-control" onChange={this.filterPlayers} placeholder="Filter Players by Name" />
           </div>
         </div>
-        <PlayersTable
+        <PlayersTable2QB
           playerList={this.state.players} />
       </div>
     );
@@ -47,7 +47,7 @@ PlayersSuperflex = React.createClass({
 });
 
 
-PlayersTable = React.createClass({
+PlayersTable2QB = React.createClass({
   _renderTrendArrow (player) {
     const trend = player.trend;
     if (trend > 0) {
@@ -76,7 +76,7 @@ PlayersTable = React.createClass({
           <tbody>
             {this.props.playerList.map((item) => {
             return (<tr>
-                      <td><Link to={"/players-2qb/" + item.id}>{item.name}</Link></td>
+                      <td><Link to={"/2qb/" + item.id}>{item.name}</Link></td>
                       <td>{item.position}</td>
                       <td>{item.feb_16}</td>
                       <td>{item.trend} <span className={this._renderTrendArrow(item)}></span></td>

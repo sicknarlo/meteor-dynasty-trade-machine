@@ -36,7 +36,6 @@ Items = React.createClass({
     console.log(this.state.players);
 
     if (this.state.players.length ==0) {
-      debugger;
       this.setState( {players: this.data.items });
     }
 

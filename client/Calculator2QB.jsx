@@ -5,7 +5,7 @@ Results = React.createClass({
     return this.props.team2.map((player) => {
       return (
           <tr>
-            <td><Link key={player._id} to={"/players-2qb/" + player.id}>{player.name}</Link></td>
+            <td><Link key={player._id} to={"/2qb/" + player.id}>{player.name}</Link></td>
             <td>{player.value}</td>
           </tr>
         )
@@ -15,7 +15,7 @@ Results = React.createClass({
     return this.props.team1.map((player) => {
       return (
           <tr>
-            <td><Link key={player._id} to={"/players-2qb/" + player.id}>{player.name}</Link></td>
+            <td><Link key={player._id} to={"/2qb/" + player.id}>{player.name}</Link></td>
             <td>{player.value}</td>
           </tr>
         )
@@ -112,7 +112,7 @@ Results = React.createClass({
               <h3>Trade Fairness: {tradeRating}%</h3> 
             </div>
             <div className="col-xs-12 text-center">
-              <h3>The difference is equivalent to <Link key={closestPlayer._id} to={"/players-2qb/" + closestPlayer.id}>{closestPlayer.name}</Link> with an ADP of {closestPlayer.feb_16}</h3> 
+              <h3>The difference is equivalent to <Link key={closestPlayer._id} to={"/2qb/" + closestPlayer.id}>{closestPlayer.name}</Link> with an ADP of {closestPlayer.feb_16}</h3> 
             </div>
             <div className="col-md-6 col-md-offset-3 text-center">
               <button className="btn btn-primary btn-lg" onClick={this.props.clearEvent}>Clear this Trade</button>
