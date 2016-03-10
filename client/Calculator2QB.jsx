@@ -1,6 +1,6 @@
 const {Link} = ReactRouter;
 
-Results = React.createClass({
+Results2QB = React.createClass({
   renderTeam1 () {
     return this.props.team2.map((player) => {
       return (
@@ -255,7 +255,7 @@ Calculator2QB = React.createClass({
 
     const resultsComponent = !!this.state.showResults ? 
                                 <div className="row">
-                                  <Results 
+                                  <Results2QB 
                                     team1={this.state.team1}
                                     team2={this.state.team2}
                                     players={this.data.players}
