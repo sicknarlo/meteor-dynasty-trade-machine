@@ -1,5 +1,204 @@
 const {Link} = ReactRouter;
 
+PlayersCompChart = React.createClass({
+  componentDidMount: function() {
+    this.buildPlayersChart(this.props.team1, this.props.team2);
+  },
+  componentWillReceiveProps: function(nextProps) {
+    this.buildPlayersChart(nextProps.team1, nextProps.team2);
+  },
+
+  buildPlayersChart (team1, team2) {
+
+    console.log(team1);
+    console.log(team2);
+
+    const data = [];
+
+    for (var i = 0; i < team1.length; i++) {
+      data.push(
+          {
+            name: team1[i].name,
+            data: [
+                team1[i].feb_16,
+                team1[i].jan_16,
+                team1[i].dec_15,
+                team1[i].nov_15,
+                team1[i].oct_15,
+                team1[i].sept_15
+            ]
+          }
+        )
+    }
+
+    for (var i = 0; i < team2.length; i++) {
+      data.push(
+          {
+            name: team2[i].name,
+            data: [
+                team2[i].feb_16,
+                team2[i].jan_16,
+                team2[i].dec_15,
+                team2[i].nov_15,
+                team2[i].oct_15,
+                team2[i].sept_15
+            ]
+          }
+        )
+    }
+
+    $('#adp-chart').highcharts({
+        title: {
+            text: "ADP Chart",
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Average Draft Position',
+            x: -20
+        },
+        xAxis: {
+            categories: ['Feb 16', 'Jan 16', 'Dec 15', 'Nov 15', 'Oct 15', 'Sept 15'],
+            reversed: true
+        },
+        yAxis: {
+            title: {
+                text: 'ADP'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }],
+            reversed: true
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: data
+    });
+  },
+
+  render () {
+
+    return (
+        <div id="adp-chart"></div>
+      )
+  }
+})
+
+RatingsChart = React.createClass({
+  componentDidMount: function() {
+    this.buildRatingChart(this.props.rating);
+  },
+  componentWillReceiveProps: function(nextProps) {
+    this.buildRatingChart(nextProps.rating);
+  },
+
+  buildRatingChart (rating) {
+
+    var gaugeOptions = {
+
+        chart: {
+            type: 'solidgauge',
+            backgroundColor: '#272b30'
+        },
+
+        title: null,
+
+        pane: {
+            center: ['50%', '85%'],
+            size: '100%',
+            startAngle: -90,
+            endAngle: 90,
+            background: {
+                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
+                innerRadius: '60%',
+                outerRadius: '100%',
+                shape: 'arc'
+            }
+        },
+
+        tooltip: {
+            enabled: false
+        },
+
+        // the value axis
+        yAxis: {
+            stops: [
+                [0.6, '#DF5353'], // red
+                [0.85, '#DDDF0D'], // yellow
+                [1, '#55BF3B'] // green
+            ],
+            lineWidth: 0,
+            minorTickInterval: null,
+            tickPixelInterval: 400,
+            tickWidth: 0,
+            title: {
+                y: -70
+            },
+            labels: {
+                y: 16
+            }
+        },
+
+        plotOptions: {
+            solidgauge: {
+                dataLabels: {
+                    y: 5,
+                    borderWidth: 0,
+                    useHTML: true
+                }
+            }
+        }
+    };
+
+    // The speed gauge
+    $('#container-speed').highcharts(Highcharts.merge(gaugeOptions, {
+        yAxis: {
+            min: 0,
+            max: 100,
+            title: {
+                text: 'Fairness'
+            }
+        },
+
+        credits: {
+            enabled: false
+        },
+
+        series: [{
+            name: 'Speed',
+            data: [rating],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || '#c8c8c8') + '">{y}%</span><br/>' +
+                       '<span style="font-size:12px;color:silver">Fairness</span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' Fairness'
+            }
+        }]
+
+    }));
+  },
+
+  render () {
+
+    console.log(this.props);
+
+    return (
+        <div id="container-speed"></div>
+      )
+  }
+  
+})
+
 Results = React.createClass({
   renderTeam1 () {
     return this.props.team2.map((player) => {
@@ -21,7 +220,6 @@ Results = React.createClass({
         )
     });
   },
-
 
   render () {
 
@@ -109,7 +307,13 @@ Results = React.createClass({
           </div>
           <div className="row">
             <div className="col-xs-12 text-center">
-              <h3>Trade Fairness: {tradeRating}%</h3> 
+              <RatingsChart
+                rating={tradeRating} />
+            </div>
+            <div className="col-xs-12 text-center">
+              <PlayersCompChart
+                team1={this.props.team1}
+                team2={this.props.team2} />
             </div>
             <div className="col-xs-12 text-center">
               <h3>The difference is equivalent to <Link key={closestPlayer._id} to={"/players/" + closestPlayer.id}>{closestPlayer.name}</Link> with an ADP of {closestPlayer.feb_16}</h3> 
@@ -261,10 +465,11 @@ Calculator = React.createClass({
                                     players={this.data.players}
                                     clearEvent={this.clearInput} /> 
                                 </div> : "";
+
     return (
       <div>
           <div className="row">
-              <div className="col-md-6 col-md-offset-3">
+              <div className="col-md-8 col-md-offset-2">
                 <div className="panel-body inf-content">
                     <div className="col-md-12">
                         <h3>How to use:</h3>

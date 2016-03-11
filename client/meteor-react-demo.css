@@ -99,3 +99,9 @@ footer {
 .itemTitle a{font-weight:bold; color:#4EBAFF !important; text-decoration:none }
 .itemTitle a:hover{ text-decoration:underline }
 .itemDate{font-size:11px;color:#AAAAAA;}
+
+/*#container-speed {
+    min-width: 310px;
+    height: 400px;
+    margin: 30px auto;
+}*/
