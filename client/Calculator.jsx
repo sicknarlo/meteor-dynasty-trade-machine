@@ -112,7 +112,7 @@ RatingsChart = React.createClass({
         title: null,
 
         pane: {
-            center: ['50%', '85%'],
+            center: ['50%', '50%'],
             size: '100%',
             startAngle: -90,
             endAngle: 90,
@@ -200,6 +200,11 @@ RatingsChart = React.createClass({
 })
 
 Results = React.createClass({
+  _calculateAge(birthday) { // birthday is a date
+    var ageDifMs = Date.now() - birthday.getTime();
+    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+  },
   renderTeam1 () {
     return this.props.team2.map((player) => {
       return (
@@ -306,7 +311,7 @@ Results = React.createClass({
             </div>
           </div>
           <div className="row">
-            <div className="col-xs-12 text-center">
+            <div className="col-xs-12 text-center testytest">
               <RatingsChart
                 rating={tradeRating} />
             </div>
