@@ -259,6 +259,7 @@ Results = React.createClass({
     const team2ValueGained = team1OutboundValue - team2OutboundValue;
     const tradeRating = 100 - Math.round((Math.min(team1OutboundValue, team2OutboundValue) / Math.max(team1OutboundValue, team2OutboundValue)) * 100);
     if (team1ValueGained > team2ValueGained) { tradeRating * -1 };
+    const tr = Math.round((Math.min(team1OutboundValue, team2OutboundValue) / Math.max(team1OutboundValue, team2OutboundValue)) * 100);
 
     let closestPlayer = this.props.players[0];
     
@@ -332,6 +333,9 @@ Results = React.createClass({
                 rating={tradeRating} />
             </div>
             <div className="col-xs-12 text-center">
+              <div className = "col-xs-12 text-center">
+                <h3>This trade is {tr}% fair</h3>
+              </div>
               <PlayersCompChart
                 team1={this.props.team1}
                 team2={this.props.team2} />
