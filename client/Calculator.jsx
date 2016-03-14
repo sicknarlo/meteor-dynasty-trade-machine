@@ -102,90 +102,105 @@ RatingsChart = React.createClass({
 
   buildRatingChart (rating) {
 
-    var gaugeOptions = {
-
+    $('#container-speed').highcharts({
         chart: {
-            type: 'solidgauge',
+            renderTo: 'container',
+            type: 'gauge',
+            plotBackgroundColor: null,
+            plotBackgroundImage: null,
+            plotBorderWidth: 0,
+            plotShadow: false,
             backgroundColor: '#272b30'
         },
-
-        title: null,
-
-        pane: {
-            center: ['50%', '50%'],
-            size: '100%',
-            startAngle: -90,
-            endAngle: 90,
-            background: {
-                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
-                innerRadius: '60%',
-                outerRadius: '100%',
-                shape: 'arc'
+        
+        title: {
+            text: 'Trade Balance',
+            style: {
+              color: '#FFF',
+              font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
             }
         },
-
-        tooltip: {
-            enabled: false
+        
+        pane: {
+            startAngle: -90,
+            endAngle:90,
+            size: ['300'],
+            center: ['50%', '50%'],
+            background: [{
+                // default background
+                backgroundColor: '#272b30',
+                         borderWidth: 0
+            }]
         },
-
+        
+        plotOptions: {
+          gauge: {
+            dial: {
+              backgroundColor: '#c8c8c8',
+              baseLength: '90%'
+            }
+          }
+        },
+           
         // the value axis
         yAxis: {
-            stops: [
-                [0.6, '#DF5353'], // red
-                [0.85, '#DDDF0D'], // yellow
-                [1, '#55BF3B'] // green
-            ],
-            lineWidth: 0,
-            minorTickInterval: null,
-            tickPixelInterval: 400,
-            tickWidth: 0,
-            title: {
-                y: -70
-            },
-            labels: {
-                y: 16
-            }
-        },
-
-        plotOptions: {
-            solidgauge: {
-                dataLabels: {
-                    y: 5,
-                    borderWidth: 0,
-                    useHTML: true
-                }
-            }
-        }
-    };
-
-    // The speed gauge
-    $('#container-speed').highcharts(Highcharts.merge(gaugeOptions, {
-        yAxis: {
-            min: 0,
+            min: -100,
             max: 100,
-            title: {
-                text: 'Fairness'
-            }
-        },
-
-        credits: {
-            enabled: false
-        },
-
-        series: [{
-            name: 'Speed',
-            data: [rating],
-            dataLabels: {
-                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
-                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || '#c8c8c8') + '">{y}%</span><br/>' +
-                       '<span style="font-size:12px;color:silver">Fairness</span></div>'
+            
+            minorTickInterval: 'auto',
+            minorTickWidth: 1,
+            minorTickLength: 10,
+            minorTickPosition: 'inside',
+            minorTickColor: '#666',
+    
+            tickPixelInterval: 30,
+            tickWidth: 2,
+            tickPosition: 'inside',
+            tickLength: 10,
+            tickColor: '#666',
+            labels: {
+                step: 2,
+                rotation: 'auto',
+                enabled: false
             },
+            title: {
+                text: '%'
+            },
+            plotBands: [{
+                from: -10,
+                to: 10,
+                color: '#55BF3B' // green
+            }, {
+                from: -30,
+                to: -10,
+                color: '#DDDF0D' // yellow
+            }, {
+                from: -100,
+                to: -30,
+                color: '#DF5353' // red
+            },{
+                from: 10,
+                to: 30,
+                color: '#DDDF0D' // yellow
+            }, {
+                from: 30,
+                to: 100,
+                color: '#DF5353' // red
+            }]
+        },
+        tooltip: {
+          enabled: false
+        },
+    
+        series: [{
+            name: 'Fairness',
+            dataLabels: false,
+            data: [rating],
             tooltip: {
-                valueSuffix: ' Fairness'
+                valueSuffix: ' %'
             }
         }]
-
-    }));
+      })
   },
 
   render () {
@@ -242,7 +257,8 @@ Results = React.createClass({
 
     const team1ValueGained = team2OutboundValue - team1OutboundValue;
     const team2ValueGained = team1OutboundValue - team2OutboundValue;
-    const tradeRating = Math.round((Math.min(team1OutboundValue, team2OutboundValue) / Math.max(team1OutboundValue, team2OutboundValue)) * 100);
+    const tradeRating = 100 - Math.round((Math.min(team1OutboundValue, team2OutboundValue) / Math.max(team1OutboundValue, team2OutboundValue)) * 100);
+    if (team1ValueGained > team2ValueGained) { tradeRating * -1 };
 
     let closestPlayer = this.props.players[0];
     
@@ -311,7 +327,7 @@ Results = React.createClass({
             </div>
           </div>
           <div className="row">
-            <div className="col-xs-12 text-center testytest">
+            <div className="col-xs-12 text-center trade-gauge">
               <RatingsChart
                 rating={tradeRating} />
             </div>
