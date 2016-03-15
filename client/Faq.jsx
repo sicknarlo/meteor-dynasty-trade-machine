@@ -108,9 +108,9 @@ Faq = React.createClass({
                   <li><a href="http://dynastyleaguefootball.com/">Dynasty League Football</a> is a great place to find ADP and quality content. Well worth the low
                   cost, and in addition to ADP you get excellent premium content.</li>
                   <li><a href="http://www.dynastynerds.com/">Dynasty Nerds</a> has great ADP and rankings, as well as one of the best podcasts out there.</li>
-                  <li><a href="www.fantasypros.com">Fantasy Pros</a> typically isn't though of much when you think of dynasty, but they have a growing solid
+                  <li><a href="http://www.fantasypros.com">Fantasy Pros</a> typically isn't though of much when you think of dynasty, but they have a growing solid
                   dynasty section including great dynasty rankings from a couple of well regarded writers.</li>
-                  <li><a href="www.reddit.com/r/dynastyff">Reddit's Dynasty Fantasy Football subreddit</a> is hands down the best resource out there. Lot's of 
+                  <li><a href="http://www.reddit.com/r/dynastyff">Reddit's Dynasty Fantasy Football subreddit</a> is hands down the best resource out there. Lot's of 
                   great original content, awesome participation, and a good place to field questions. Can't recommend this enough.</li>
                 </ul>
               </div>
