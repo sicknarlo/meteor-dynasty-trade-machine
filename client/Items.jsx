@@ -77,7 +77,6 @@ PlayersTable = React.createClass({
               <th>Position</th>
               <th>ADP</th>
               <th>Trend</th>
-              <th>Age</th>
               <th>Value</th>
             </tr>
           </thead>
