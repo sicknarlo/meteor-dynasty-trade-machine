@@ -3,7 +3,7 @@ const {Link} = ReactRouter;
 Index = React.createClass({mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      players: Players.find({feb_16: { $lt: 101 }}, {sort: {trend: 1}}).fetch()
+      players: Players.find({mar_16: { $lt: 101 }}, {sort: {trend: 1}}).fetch()
     };
   },
   componentWillMount() {
@@ -16,14 +16,14 @@ Index = React.createClass({mixins: [ReactMeteorData],
     const risersTable = risingPlayers.reverse().map((p) => {
                             return (<tr>
                                       <td><Link to={"/players/" + p.id}>{p.name}</Link></td>
-                                      <td>{p.feb_16}</td>
+                                      <td>{p.mar_16}</td>
                                       <td>+{p.trend}</td>
                                     </tr>);
                         });
     const fallersTable = fallingPlayers.map((p) => {
                             return (<tr>
                                       <td><Link to={"/players/" + p.id}>{p.name}</Link></td>
-                                      <td>{p.feb_16}</td>
+                                      <td>{p.mar_16}</td>
                                       <td>{p.trend}</td>
                                     </tr>);
                         });
@@ -32,7 +32,7 @@ Index = React.createClass({mixins: [ReactMeteorData],
 
         <header className="jumbotron hero-spacer">
             <span className="hero-header">The Dynasty Trade Machine</span>
-            <p className="hero-text">Win trades. Win championships. | Updated 2/25/16</p>
+            <p className="hero-text">Win trades. Win championships. | Updated 3/29/16</p>
         </header>
 
         <hr/>
