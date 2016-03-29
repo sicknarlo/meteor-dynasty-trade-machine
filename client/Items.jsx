@@ -77,16 +77,19 @@ PlayersTable = React.createClass({
               <th>Position</th>
               <th>ADP</th>
               <th>Trend</th>
+              <th>Age</th>
               <th>Value</th>
             </tr>
           </thead>
           <tbody>
             {this.props.playerList.map((item) => {
+              const age = item.birthdate == "PICK" ? "PICK" : this._calculateAge(new Date(item.birthdate * 1000))
             return (<tr>
                       <td><Link to={"/players/" + item.id}>{item.name}</Link></td>
                       <td>{item.position}</td>
                       <td>{item.mar_16}</td>
                       <td>{item.trend} <span className={this._renderTrendArrow(item)}></span></td>
+                      <td>{age}</td>
                       <td>{item.value}</td>
                     </tr>);
           })}
