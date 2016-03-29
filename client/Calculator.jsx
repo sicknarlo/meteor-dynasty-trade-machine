@@ -37,7 +37,7 @@ PlayersCompChart = React.createClass({
           {
             name: team2[i].name,
             data: [
-                team1[i].mar_16,
+                team2[i].mar_16,
                 team2[i].feb_16,
                 team2[i].jan_16,
                 team2[i].dec_15,
@@ -259,8 +259,12 @@ Results = React.createClass({
 
     const team1ValueGained = team2OutboundValue - team1OutboundValue;
     const team2ValueGained = team1OutboundValue - team2OutboundValue;
-    const tradeRating = 100 - Math.round((Math.min(team1OutboundValue, team2OutboundValue) / Math.max(team1OutboundValue, team2OutboundValue)) * 100);
-    if (team1ValueGained > team2ValueGained) { tradeRating * -1 };
+    let tradeRating = 100 - Math.round((Math.min(team1OutboundValue, team2OutboundValue) / Math.max(team1OutboundValue, team2OutboundValue)) * 100);
+    console.log("Team1");
+    console.log(team1ValueGained);
+    console.log(team2ValueGained);
+
+    if (team1ValueGained > team2ValueGained) { tradeRating *= -1 };
     const tr = Math.round((Math.min(team1OutboundValue, team2OutboundValue) / Math.max(team1OutboundValue, team2OutboundValue)) * 100);
 
     let closestPlayer = this.props.players[0];
