@@ -1,6 +1,6 @@
 const {Link} = ReactRouter;
 
-ChartADP = React.createClass({
+ChartADP2QB = React.createClass({
   buildChart(status) {
     const props = status == "this" ? this.props : status;
     const player = props.player
@@ -339,7 +339,7 @@ Player2QB = React.createClass({
           </div>
           <div className="row">
             <div className="col-md-12">
-              <ChartADP
+              <ChartADP2QB
                 player={player} />
             </div>
           </div>
