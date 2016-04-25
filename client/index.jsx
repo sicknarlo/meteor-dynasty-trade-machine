@@ -3,7 +3,7 @@ const {Link} = ReactRouter;
 Index = React.createClass({mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      players: Players.find({mar_16: { $lt: 101 }}, {sort: {trend: 1}}).fetch()
+      players: Players.find({apr_16: { $lt: 101 }}, {sort: {trend: 1}}).fetch()
     };
   },
   componentWillMount() {
@@ -16,14 +16,14 @@ Index = React.createClass({mixins: [ReactMeteorData],
     const risersTable = risingPlayers.reverse().map((p) => {
                             return (<tr>
                                       <td><Link to={"/players/" + p.id}>{p.name}</Link></td>
-                                      <td>{p.mar_16}</td>
+                                      <td>{p.apr_16}</td>
                                       <td>+{p.trend}</td>
                                     </tr>);
                         });
     const fallersTable = fallingPlayers.map((p) => {
                             return (<tr>
                                       <td><Link to={"/players/" + p.id}>{p.name}</Link></td>
-                                      <td>{p.mar_16}</td>
+                                      <td>{p.apr_16}</td>
                                       <td>{p.trend}</td>
                                     </tr>);
                         });
