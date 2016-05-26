@@ -42,7 +42,7 @@ Results2QB = React.createClass({
     const tradeRating = Math.round((Math.min(team1OutboundValue, team2OutboundValue) / Math.max(team1OutboundValue, team2OutboundValue)) * 100);
 
     let closestPlayer = this.props.players[0];
-    
+
     if (Math.abs(team1ValueGained) < 10000) {
       for (var i=0; i < this.props.players.length; i++) {
         if (Math.abs(Math.abs(team1ValueGained) - this.props.players[i].value) < Math.abs(Math.abs(team1ValueGained) - closestPlayer.value)) {
@@ -109,10 +109,10 @@ Results2QB = React.createClass({
           </div>
           <div className="row">
             <div className="col-xs-12 text-center">
-              <h3>Trade Fairness: {tradeRating}%</h3> 
+              <h3>Trade Fairness: {tradeRating}%</h3>
             </div>
             <div className="col-xs-12 text-center">
-              <h3>The difference is equivalent to <Link key={closestPlayer._id} to={"/2qb/" + closestPlayer.id}>{closestPlayer.name}</Link> with an ADP of {closestPlayer.apr_16}</h3> 
+              <h3>The difference is equivalent to <Link key={closestPlayer._id} to={"/2qb/" + closestPlayer.id}>{closestPlayer.name}</Link> with an ADP of {closestPlayer.may_16}</h3>
             </div>
             <div className="col-md-6 col-md-offset-3 text-center">
               <button className="btn btn-primary btn-lg" onClick={this.props.clearEvent}>Clear this Trade</button>
@@ -128,7 +128,7 @@ Calculator2QB = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      players: Players2QB.find({}, {sort: {apr_16: 1}}).fetch()
+      players: Players2QB.find({}, {sort: {may_16: 1}}).fetch()
     };
   },
   getInitialState: function() {
@@ -253,13 +253,13 @@ Calculator2QB = React.createClass({
       });
     });
 
-    const resultsComponent = !!this.state.showResults ? 
+    const resultsComponent = !!this.state.showResults ?
                                 <div className="row">
-                                  <Results2QB 
+                                  <Results2QB
                                     team1={this.state.team1}
                                     team2={this.state.team2}
                                     players={this.data.players}
-                                    clearEvent={this.clearInput} /> 
+                                    clearEvent={this.clearInput} />
                                 </div> : "";
     return (
       <div>
@@ -282,7 +282,7 @@ Calculator2QB = React.createClass({
               <h2>Team 1 Sends:</h2>
             </div>
             <div className="form-group">
-                <input 
+                <input
                   type="text"
                   className="form-control playerList"
                   id="players"
@@ -291,7 +291,7 @@ Calculator2QB = React.createClass({
                   autoComplete="on" />
             </div>
             <div className="form-group">
-                <input 
+                <input
                   type="text"
                   className="form-control playerList"
                   id="players"
@@ -300,7 +300,7 @@ Calculator2QB = React.createClass({
                   autoComplete="on" />
             </div>
             <div className="form-group">
-                <input 
+                <input
                   type="text"
                   className="form-control playerList"
                   id="players"
@@ -309,7 +309,7 @@ Calculator2QB = React.createClass({
                   autoComplete="on" />
             </div>
             <div className="form-group">
-              <input 
+              <input
                 type="text"
                 className="form-control playerList"
                 id="players"
@@ -318,7 +318,7 @@ Calculator2QB = React.createClass({
                 autoComplete="on" />
             </div>
             <div className="form-group">
-              <input 
+              <input
                 type="text"
                 className="form-control playerList"
                 id="players"
@@ -332,7 +332,7 @@ Calculator2QB = React.createClass({
               <h2>Team 2 Sends:</h2>
             </div>
             <div className="form-group">
-                <input 
+                <input
                   type="text"
                   className="form-control playerList"
                   id="players"
@@ -341,7 +341,7 @@ Calculator2QB = React.createClass({
                   autoComplete="on" />
             </div>
             <div className="form-group">
-                <input 
+                <input
                   type="text"
                   className="form-control playerList"
                   id="players"
@@ -350,7 +350,7 @@ Calculator2QB = React.createClass({
                   autoComplete="on" />
             </div>
             <div className="form-group">
-                <input 
+                <input
                   type="text"
                   className="form-control playerList"
                   id="players"
@@ -359,7 +359,7 @@ Calculator2QB = React.createClass({
                   autoComplete="on" />
             </div>
             <div className="form-group">
-              <input 
+              <input
                 type="text"
                 className="form-control playerList"
                 id="players"
@@ -368,7 +368,7 @@ Calculator2QB = React.createClass({
                 autoComplete="on" />
             </div>
             <div className="form-group">
-              <input 
+              <input
                 type="text"
                 className="form-control playerList"
                 id="players"

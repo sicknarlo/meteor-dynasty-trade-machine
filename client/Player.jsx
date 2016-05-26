@@ -5,14 +5,12 @@ ChartADP = React.createClass({
     const props = status == "this" ? this.props : status;
     const player = props.player
     const data = [
-                  player.apr_16,
-                  player.mar_16,
-                  player.feb_16,
-                  player.jan_16,
-                  player.dec_15,
-                  player.nov_15,
-                  player.oct_15,
-                  player.sept_15
+                    player.may_16,
+                    player.apr_16,
+                    player.mar_16,
+                    player.feb_16,
+                    player.jan_16,
+                    player.dec_15
                                 ]
     $('#adp-chart').highcharts({
         title: {
@@ -24,7 +22,7 @@ ChartADP = React.createClass({
             x: -20
         },
         xAxis: {
-            categories: ['Apr 16', 'Mar 16', 'Feb 16', 'Jan 16', 'Dec 15', 'Nov 15', 'Oct 15', 'Sept 15'],
+            categories: ['May 16', 'Apr 16', 'Mar 16', 'Feb 16', 'Jan 16', 'Dec 15'],
             reversed: true
         },
         yAxis: {
@@ -75,7 +73,7 @@ Player = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      players: Players.find({}, {sort: {apr_16: 1}}).fetch(),
+      players: Players.find({}, {sort: {may_16: 1}}).fetch(),
       player: Players.find({id: parseInt(this.props.params.playerId)}).fetch()
     };
   },
@@ -90,7 +88,7 @@ Player = React.createClass({
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   },
   componentWillUpdate() {
-    
+
   },
   _renderheight(inches) {
     const ft = Math.floor(inches / 12);
@@ -106,7 +104,7 @@ Player = React.createClass({
     } else {
       return "glyphicon glyphicon-arrow-down red";
     }
-    
+
   },
   _buildSimilarPlayers(player) {
     const playerIndex = this.data.players.indexOf(player);
@@ -192,12 +190,12 @@ Player = React.createClass({
           return p.id == pId;
       })[0];
 
-      const imgLoc = player.position == "PICK" ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" 
+      const imgLoc = player.position == "PICK" ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
                                                : "http://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/" + player.espn_id + ".png&w=350&h=254";
 
       const experience = player.draft_year == "PICK" ? "PICK" : this._calculateAge(new Date(player.draft_year - 1, 4, 1)) + " years";
       const age = player.birthdate == "PICK" ? "PICK" : this._calculateAge(new Date(player.birthdate * 1000));
-      const stars = this._renderStars(player.apr_16);
+      const stars = this._renderStars(player.may_16);
       const similarPlayers = this._buildSimilarPlayers(player);
       const height = player.height == "PICK" ? "PICK" : this._renderheight(player.height);
       const weight = player.weight == "PICK" ? "PICK" : player.weight + "lbs";
@@ -208,13 +206,13 @@ Player = React.createClass({
       const rssURL = "https://www.fantasysp.com/rss/nfl/player!" + pName[0] + "_" + pName[1] + "/";
 
       return (
-        
+
         <div>
           <div className="row bootstrap snippet">
             <div className="panel-body inf-content">
                 <div className="row">
                     <div className="col-md-4 profile-panel">
-                        <img alt="" title="" className="img-circle img-thumbnail isTooltip player-profile" src={imgLoc} data-original-title="Usuario" /> 
+                        <img alt="" title="" className="img-circle img-thumbnail isTooltip player-profile" src={imgLoc} data-original-title="Usuario" />
                         {stars}
                         <span className="roto-link"><a href={rotoLink}>Get the latest news on {player.name} at Rotoworld</a></span>
                     </div>
@@ -223,89 +221,89 @@ Player = React.createClass({
                         <div className="table-responsive">
                         <table className="table table-condensed table-responsive table-user-information">
                             <tbody>
-                                <tr>        
+                                <tr>
                                     <td>
                                         <strong>
-                                            Age                                               
+                                            Age
                                         </strong>
                                     </td>
                                     <td className="text-primary">
-                                        {age}    
+                                        {age}
                                     </td>
                                 </tr>
-                                <tr>    
+                                <tr>
                                     <td>
                                         <strong>
-                                            Position                                                
+                                            Position
                                         </strong>
                                     </td>
                                     <td className="text-primary">
-                                        {player.position}     
+                                        {player.position}
                                     </td>
                                 </tr>
-                                <tr>        
+                                <tr>
                                     <td>
                                         <strong>
-                                            Team                                                
+                                            Team
                                         </strong>
                                     </td>
                                     <td className="text-primary">
-                                        {player.team}  
-                                    </td>
-                                </tr>
-
-                                <tr>        
-                                    <td>
-                                        <strong>
-                                            Experience                                                
-                                        </strong>
-                                    </td>
-                                    <td className="text-primary">
-                                        {experience} 
+                                        {player.team}
                                     </td>
                                 </tr>
 
-
-                                <tr>        
+                                <tr>
                                     <td>
                                         <strong>
-                                            Height                                                
+                                            Experience
+                                        </strong>
+                                    </td>
+                                    <td className="text-primary">
+                                        {experience}
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            Height
                                         </strong>
                                     </td>
                                     <td className="text-primary">
                                         {height}
                                     </td>
                                 </tr>
-                                <tr>        
+                                <tr>
                                     <td>
                                         <strong>
-                                            Weight                                                
+                                            Weight
                                         </strong>
                                     </td>
                                     <td className="text-primary">
-                                        {weight} 
+                                        {weight}
                                     </td>
                                 </tr>
-                                <tr>        
+                                <tr>
                                     <td>
                                         <strong>
-                                            College                                               
+                                            College
                                         </strong>
                                     </td>
                                     <td className="text-primary">
                                         {player.college}
                                     </td>
                                 </tr>
-                                <tr>        
+                                <tr>
                                     <td>
                                         <strong>
-                                            Twitter Username                                               
+                                            Twitter Username
                                         </strong>
                                     </td>
                                     <td className="text-primary">
                                         <a href={twitterLink}>{player.twitter_username}</a>
                                     </td>
-                                </tr>                                 
+                                </tr>
                             </tbody>
                         </table>
                         </div>
@@ -324,7 +322,7 @@ Player = React.createClass({
                           <h3 className="panel-title">ADP</h3>
                         </div>
                         <div className="panel-body text-center">
-                          <strong><h3><span className="glyphicon glyphicon-signal"></span> {player.apr_16}</h3></strong>
+                          <strong><h3><span className="glyphicon glyphicon-signal"></span> {player.may_16}</h3></strong>
                         </div>
                       </div>
                       <div className="panel panel-default">
@@ -362,14 +360,14 @@ Player = React.createClass({
                        return (<tr className="info">
                             <td><Link to={"/players/" + p.id}>{p.name}</Link></td>
                             <td>{p.position}</td>
-                            <td>{p.apr_16}</td>
+                            <td>{p.may_16}</td>
                             <td>{p.value}</td>
                           </tr>);
                     } else {
                         return (<tr>
                                   <td><Link to={"/players/" + p.id}>{p.name}</Link></td>
                                   <td>{p.position}</td>
-                                  <td>{p.apr_16}</td>
+                                  <td>{p.may_16}</td>
                                   <td>{p.value}</td>
                                 </tr>);
                       }
@@ -378,7 +376,7 @@ Player = React.createClass({
               </table>
             </div>
           </div>
-        </div>                                        
+        </div>
       );
     } else {
       return <div></div>

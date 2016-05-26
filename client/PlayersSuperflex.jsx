@@ -4,7 +4,7 @@ PlayersSuperflex = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      items: Players2QB.find({}, {sort: {apr_16: 1}}).fetch()
+      items: Players2QB.find({}, {sort: {may_16: 1}}).fetch()
     };
   },
   getInitialState () {
@@ -57,7 +57,7 @@ PlayersTable2QB = React.createClass({
     } else {
       return "glyphicon glyphicon-arrow-down red";
     }
-    
+
   },
   render() {
 
@@ -78,7 +78,7 @@ PlayersTable2QB = React.createClass({
             return (<tr>
                       <td><Link to={"/2qb/" + item.id}>{item.name}</Link></td>
                       <td>{item.position}</td>
-                      <td>{item.apr_16}</td>
+                      <td>{item.may_16}</td>
                       <td>{item.trend} <span className={this._renderTrendArrow(item)}></span></td>
                       <td>{item.value}</td>
                     </tr>);
