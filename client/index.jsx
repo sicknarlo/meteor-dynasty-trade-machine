@@ -32,7 +32,7 @@ Index = React.createClass({mixins: [ReactMeteorData],
 
         <header className="jumbotron hero-spacer">
             <span className="hero-header">The Dynasty Trade Machine</span>
-            <p className="hero-text">Win trades. Win championships. | Updated 5/26/16</p>
+            <p className="hero-text">Win trades. Win championships. | Updated 6/28/16</p>
         </header>
 
         <hr/>
