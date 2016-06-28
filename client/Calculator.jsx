@@ -20,7 +20,7 @@ PlayersCompChart = React.createClass({
           {
             name: team1[i].name,
             data: [
-                team1[i].jun_15,
+                team1[i].jun_16,
                 team1[i].may_16,
                 team1[i].apr_16,
                 team1[i].mar_16,
@@ -36,7 +36,7 @@ PlayersCompChart = React.createClass({
           {
             name: team2[i].name,
             data: [
-                team2[i].jun_15,
+                team2[i].jun_16,
                 team2[i].may_16,
                 team2[i].apr_16,
                 team2[i].mar_16,
