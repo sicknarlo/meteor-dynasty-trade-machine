@@ -5,12 +5,12 @@ ChartADP = React.createClass({
     const props = status == "this" ? this.props : status;
     const player = props.player
     const data = [
+                    player.jun_15,
                     player.may_16,
                     player.apr_16,
                     player.mar_16,
                     player.feb_16,
                     player.jan_16,
-                    player.dec_15
                                 ]
     $('#adp-chart').highcharts({
         title: {
@@ -22,7 +22,7 @@ ChartADP = React.createClass({
             x: -20
         },
         xAxis: {
-            categories: ['May 16', 'Apr 16', 'Mar 16', 'Feb 16', 'Jan 16', 'Dec 15'],
+            categories: ['Jun 16', 'May 16', 'Apr 16', 'Mar 16', 'Feb 16', 'Jan 16'],
             reversed: true
         },
         yAxis: {
@@ -73,7 +73,7 @@ Player = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      players: Players.find({}, {sort: {may_16: 1}}).fetch(),
+      players: Players.find({}, {sort: {jun_16: 1}}).fetch(),
       player: Players.find({id: parseInt(this.props.params.playerId)}).fetch()
     };
   },
@@ -195,7 +195,7 @@ Player = React.createClass({
 
       const experience = player.draft_year == "PICK" ? "PICK" : this._calculateAge(new Date(player.draft_year - 1, 4, 1)) + " years";
       const age = player.birthdate == "PICK" ? "PICK" : this._calculateAge(new Date(player.birthdate * 1000));
-      const stars = this._renderStars(player.may_16);
+      const stars = this._renderStars(player.jun_16);
       const similarPlayers = this._buildSimilarPlayers(player);
       const height = player.height == "PICK" ? "PICK" : this._renderheight(player.height);
       const weight = player.weight == "PICK" ? "PICK" : player.weight + "lbs";
@@ -322,7 +322,7 @@ Player = React.createClass({
                           <h3 className="panel-title">ADP</h3>
                         </div>
                         <div className="panel-body text-center">
-                          <strong><h3><span className="glyphicon glyphicon-signal"></span> {player.may_16}</h3></strong>
+                          <strong><h3><span className="glyphicon glyphicon-signal"></span> {player.jun_16}</h3></strong>
                         </div>
                       </div>
                       <div className="panel panel-default">
@@ -360,14 +360,14 @@ Player = React.createClass({
                        return (<tr className="info">
                             <td><Link to={"/players/" + p.id}>{p.name}</Link></td>
                             <td>{p.position}</td>
-                            <td>{p.may_16}</td>
+                            <td>{p.jun_16}</td>
                             <td>{p.value}</td>
                           </tr>);
                     } else {
                         return (<tr>
                                   <td><Link to={"/players/" + p.id}>{p.name}</Link></td>
                                   <td>{p.position}</td>
-                                  <td>{p.may_16}</td>
+                                  <td>{p.jun_16}</td>
                                   <td>{p.value}</td>
                                 </tr>);
                       }

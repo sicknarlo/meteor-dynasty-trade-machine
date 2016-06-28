@@ -20,12 +20,12 @@ PlayersCompChart = React.createClass({
           {
             name: team1[i].name,
             data: [
+                team1[i].jun_15
                 team1[i].may_16,
                 team1[i].apr_16,
                 team1[i].mar_16,
                 team1[i].feb_16,
                 team1[i].jan_16,
-                team1[i].dec_15
             ]
           }
         )
@@ -36,12 +36,12 @@ PlayersCompChart = React.createClass({
           {
             name: team2[i].name,
             data: [
+                team2[i].jun_15
                 team2[i].may_16,
                 team2[i].apr_16,
                 team2[i].mar_16,
                 team2[i].feb_16,
                 team2[i].jan_16,
-                team2[i].dec_15
             ]
           }
         )
@@ -57,7 +57,7 @@ PlayersCompChart = React.createClass({
             x: -20
         },
         xAxis: {
-            categories: ['May 16', 'Apr 16', 'Mar 16', 'Feb 16', 'Jan 16', 'Dec 15'],
+            categories: ['Jun 16', 'May 16', 'Apr 16', 'Mar 16', 'Feb 16', 'Jan 16'],
             reversed: true
         },
         yAxis: {
@@ -345,7 +345,7 @@ Results = React.createClass({
                 team2={this.props.team2} />
             </div>
             <div className="col-xs-12 text-center">
-              <h3>The difference is equivalent to <Link key={closestPlayer._id} to={"/players/" + closestPlayer.id}>{closestPlayer.name}</Link> with an ADP of {closestPlayer.may_16}</h3>
+              <h3>The difference is equivalent to <Link key={closestPlayer._id} to={"/players/" + closestPlayer.id}>{closestPlayer.name}</Link> with an ADP of {closestPlayer.jun_16}</h3>
             </div>
             <div className="col-md-6 col-md-offset-3 text-center">
               <button className="btn btn-primary btn-lg" onClick={this.props.clearEvent}>Clear this Trade</button>
@@ -361,7 +361,7 @@ Calculator = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      players: Players.find({}, {sort: {may_16: 1}}).fetch()
+      players: Players.find({}, {sort: {jun_16: 1}}).fetch()
     };
   },
   getInitialState: function() {

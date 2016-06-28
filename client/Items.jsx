@@ -4,7 +4,7 @@ Items = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      items: Players.find({}, {sort: {may_16: 1}}).fetch()
+      items: Players.find({}, {sort: {jun_16: 1}}).fetch()
     };
   },
   getInitialState () {
@@ -85,7 +85,7 @@ PlayersTable = React.createClass({
             return (<tr>
                       <td><Link to={"/players/" + item.id}>{item.name}</Link></td>
                       <td>{item.position}</td>
-                      <td>{item.may_16}</td>
+                      <td>{item.jun_16}</td>
                       <td>{item.trend} <span className={this._renderTrendArrow(item)}></span></td>
                       <td>{item.value}</td>
                     </tr>);
