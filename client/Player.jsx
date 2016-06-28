@@ -5,7 +5,7 @@ ChartADP = React.createClass({
     const props = status == "this" ? this.props : status;
     const player = props.player
     const data = [
-                    player.jun_15,
+                    player.jun_16,
                     player.may_16,
                     player.apr_16,
                     player.mar_16,
